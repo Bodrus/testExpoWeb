@@ -1,22 +1,24 @@
-import {StyleSheet, Text, View} from "react-native";
-import {StatusBar} from "expo-status-bar";
+import React from "react";
+import {Pressable, Text} from "react-native";
+import {ThemeContext} from "../../context/ThemeContext";
+import styles from "./styles";
+import CustomLoader from "../../components/CustomLoader";
 
 const HomeScreen = () => {
+
+    const { theme, toggleTheme, loading } = React.useContext(ThemeContext);
+
     return (
-        <View style={styles.container}>
-            <Text>Hello there</Text>
-            <StatusBar style="auto" />
-        </View>
+        <>
+        {loading && <CustomLoader />}
+            {!loading && <Pressable
+            style={[styles.container, { backgroundColor: theme.backgroundColor }]}
+            onPress={toggleTheme}
+        >
+            <Text style={[styles.text, { color: theme.textColor }]}>Hello there</Text>
+        </Pressable>}
+        </>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
 
 export default HomeScreen;
