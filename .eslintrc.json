@@ -1,0 +1,15 @@
+{
+  "extends": ["universe/native"],
+  "plugins": ["react", "react-native"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Автоматическое определение версии React
+    }
+  }
+}
+

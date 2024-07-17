@@ -1,11 +1,10 @@
 export interface Theme {
-    backgroundColor: string,
-    textColor: string,
+  backgroundColor: string;
+  textColor: string;
 }
 
-
 export interface ThemeContextProps {
-    theme: Theme,
-    toggleTheme: () => void,
-    loading: boolean;
+  theme: Theme;
+  toggleTheme: () => void;
+  loading: boolean;
 }
