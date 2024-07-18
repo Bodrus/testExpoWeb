@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-import { themes } from "../constants";
+import { THEME_INDEX, themes } from "../constants";
 import { ThemeContextProps } from "../types/theme";
 import { getRandomIndex } from "../utils";
 
@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const loadTheme = async () => {
       try {
-        const savedThemeIndex = await AsyncStorage.getItem("themeIndex");
+        const savedThemeIndex = await AsyncStorage.getItem(THEME_INDEX);
 
         if (savedThemeIndex) {
           setThemeIndex(parseInt(savedThemeIndex, 10));
@@ -35,7 +35,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const saveThemeIndex = async () => {
       try {
         const jsonValue = JSON.stringify(themeIndex);
-        await AsyncStorage.setItem("themeIndex", jsonValue);
+        await AsyncStorage.setItem(THEME_INDEX, jsonValue);
       } catch (e) {
         console.log("Failed to save theme index:", e);
       }

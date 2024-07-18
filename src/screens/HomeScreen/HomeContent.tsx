@@ -14,25 +14,26 @@ export const HomeContent = () => {
   } = useThemeSwitcher();
 
   return (
-    <View style={{ flex: 1 }}>
-      <View>
+    <View style={styles.root}>
+      <View style={styles.innerContainer}>
         <ThemeSwitcher
           color="black"
           colorMethodName={colorMethodName}
           toggleSwitch={switchBackgroundColorMethod}
+          background={currentTheme.backgroundColor}
         />
+        <Pressable
+          style={[
+            styles.container,
+            { backgroundColor: currentTheme.backgroundColor },
+          ]}
+          onPress={handlePress}
+        >
+          <Text style={[styles.text, { color: currentTheme.textColor }]}>
+            Hello there
+          </Text>
+        </Pressable>
       </View>
-      <Pressable
-        style={[
-          styles.container,
-          { backgroundColor: currentTheme.backgroundColor },
-        ]}
-        onPress={handlePress}
-      >
-        <Text style={[styles.text, { color: currentTheme.textColor }]}>
-          Hello there
-        </Text>
-      </Pressable>
     </View>
   );
 };

@@ -16,3 +16,7 @@ export const themes: Theme[] = [
 export const RANDOMLY_GENERATOR_COLOR = "randomly generated color";
 
 export const USE_THEME_COLORS = "use theme colors";
+
+export const STORAGE_KEY_COLOR_METHOD = "colorMethodName";
+
+export const THEME_INDEX = "themeIndex";
