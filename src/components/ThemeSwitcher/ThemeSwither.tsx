@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, Switch, StyleSheet } from "react-native";
+import { View, Text, Switch } from "react-native";
 
+import styles from "./styles";
 import {
   RANDOMLY_GENERATOR_COLOR,
   USE_THEME_COLORS,
@@ -38,21 +39,5 @@ const ThemeSwitcher = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    width: "100%",
-  },
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    padding: 16,
-  },
-  label: {
-    fontSize: 18,
-    width: 250,
-  },
-});
 
 export default ThemeSwitcher;
