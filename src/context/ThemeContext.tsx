@@ -1,9 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-import { THEME_INDEX, themes } from "../constants";
 import { ThemeContextProps } from "../types/theme";
-import { getRandomIndex } from "../utils";
+import { THEME_INDEX, themes } from "../utils/constants";
+import { getRandomIndex } from "../utils/randomUtils";
 
 export const ThemeContext = createContext<ThemeContextProps | undefined>(
   undefined,

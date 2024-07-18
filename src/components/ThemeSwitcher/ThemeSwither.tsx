@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, Switch, StyleSheet } from "react-native";
 
-import { RANDOMLY_GENERATOR_COLOR, USE_THEME_COLORS } from "../../constants";
+import {
+  RANDOMLY_GENERATOR_COLOR,
+  USE_THEME_COLORS,
+} from "../../utils/constants";
 
 interface ThemeSwitcherProps {
   color: string;

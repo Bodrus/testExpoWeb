@@ -1,4 +1,4 @@
-import { Theme } from "./types/theme";
+import { Theme } from "../types/theme";
 
 export const getRandomIndex = (array: Theme[], excludedIndex: number) => {
   if (!Array.isArray(array)) {

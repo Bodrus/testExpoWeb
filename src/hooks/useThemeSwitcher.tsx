@@ -1,13 +1,13 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState, useContext, useEffect } from "react";
 
+import { ThemeContext } from "../context/ThemeContext";
 import {
   RANDOMLY_GENERATOR_COLOR,
   STORAGE_KEY_COLOR_METHOD,
   USE_THEME_COLORS,
-} from "../constants";
-import { ThemeContext } from "../context/ThemeContext";
-import { getRandomColor } from "../utils";
+} from "../utils/constants";
+import { getRandomColor } from "../utils/randomUtils";
+import { loadItem, saveItem } from "../utils/storage";
 
 const useThemeSwitcher = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -18,15 +18,9 @@ const useThemeSwitcher = () => {
 
   useEffect(() => {
     const loadColorMethodName = async () => {
-      try {
-        const storedColorMethod = await AsyncStorage.getItem(
-          STORAGE_KEY_COLOR_METHOD,
-        );
-        if (storedColorMethod) {
-          setColorMethodName(storedColorMethod);
-        }
-      } catch (error) {
-        console.error("Failed to load color method name:", error);
+      const storedColorMethod = await loadItem(STORAGE_KEY_COLOR_METHOD);
+      if (storedColorMethod) {
+        setColorMethodName(storedColorMethod);
       }
     };
 
@@ -34,15 +28,7 @@ const useThemeSwitcher = () => {
   }, []);
 
   useEffect(() => {
-    const saveColorMethodName = async () => {
-      try {
-        await AsyncStorage.setItem(STORAGE_KEY_COLOR_METHOD, colorMethodName);
-      } catch (error) {
-        console.error("Failed to save color method name:", error);
-      }
-    };
-
-    saveColorMethodName();
+    saveItem(STORAGE_KEY_COLOR_METHOD, colorMethodName);
   }, [colorMethodName]);
 
   const switchBackgroundColorMethod = () => {

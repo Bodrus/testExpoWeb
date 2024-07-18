@@ -1,4 +1,4 @@
-import { Theme } from "./types/theme";
+import { Theme } from "../types/theme";
 
 export const themes: Theme[] = [
   { backgroundColor: "#ffebee", textColor: "#b71c1c" },
