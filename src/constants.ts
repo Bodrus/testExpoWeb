@@ -1,6 +1,6 @@
-import { Theme } from "../types/theme";
+import { Theme } from "./types/theme";
 
-const themes: Theme[] = [
+export const themes: Theme[] = [
   { backgroundColor: "#ffebee", textColor: "#b71c1c" },
   { backgroundColor: "#f3e5f5", textColor: "#4a148c" },
   { backgroundColor: "#e8eaf6", textColor: "#1a237e" },
@@ -13,4 +13,6 @@ const themes: Theme[] = [
   { backgroundColor: "#eceff1", textColor: "#263238" },
 ];
 
-export default themes;
+export const RANDOMLY_GENERATOR_COLOR = "randomly generated color";
+
+export const USE_THEME_COLORS = "use theme colors";

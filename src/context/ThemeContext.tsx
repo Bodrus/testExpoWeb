@@ -1,8 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-import themes from "../theme";
+import { themes } from "../constants";
 import { ThemeContextProps } from "../types/theme";
+import { getRandomIndex } from "../utils";
 
 export const ThemeContext = createContext<ThemeContextProps | undefined>(
   undefined,
@@ -18,7 +19,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
         const savedThemeIndex = await AsyncStorage.getItem("themeIndex");
 
         if (savedThemeIndex) {
-          setThemeIndex(parseInt(savedThemeIndex));
+          setThemeIndex(parseInt(savedThemeIndex, 10));
         }
       } catch (error) {
         console.log("Failed to load theme:", error);
@@ -45,7 +46,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   }, [themeIndex]);
 
   const toggleTheme = async () => {
-    setThemeIndex((prevIndex) => (prevIndex + 1) % themes.length);
+    setThemeIndex((prevIndex) => getRandomIndex(themes, prevIndex));
   };
 
   const theme = themes[themeIndex];
